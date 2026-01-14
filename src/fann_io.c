@@ -175,6 +175,9 @@ int fann_save_internal_fd(struct fann *ann, FILE *conf, const char *configuratio
   fprintf(conf, "rprop_delta_min=%f\n", ann->rprop_delta_min);
   fprintf(conf, "rprop_delta_max=%f\n", ann->rprop_delta_max);
   fprintf(conf, "rprop_delta_zero=%f\n", ann->rprop_delta_zero);
+  fprintf(conf, "adam_beta1=%f\n", ann->adam_beta1);
+  fprintf(conf, "adam_beta2=%f\n", ann->adam_beta2);
+  fprintf(conf, "adam_epsilon=%f\n", ann->adam_epsilon);
   fprintf(conf, "cascade_output_stagnation_epochs=%u\n", ann->cascade_output_stagnation_epochs);
   fprintf(conf, "cascade_candidate_change_fraction=%f\n", ann->cascade_candidate_change_fraction);
   fprintf(conf, "cascade_candidate_stagnation_epochs=%u\n",
@@ -420,6 +423,9 @@ struct fann *fann_create_from_fd(FILE *conf, const char *configuration_file) {
   fann_scanf("%f", "rprop_delta_min", &ann->rprop_delta_min);
   fann_scanf("%f", "rprop_delta_max", &ann->rprop_delta_max);
   fann_scanf("%f", "rprop_delta_zero", &ann->rprop_delta_zero);
+  fann_scanf("%f", "adam_beta1", &ann->adam_beta1);
+  fann_scanf("%f", "adam_beta2", &ann->adam_beta2);
+  fann_scanf("%f", "adam_epsilon", &ann->adam_epsilon);
   fann_scanf("%u", "cascade_output_stagnation_epochs", &ann->cascade_output_stagnation_epochs);
   fann_scanf("%f", "cascade_candidate_change_fraction", &ann->cascade_candidate_change_fraction);
   fann_scanf("%u", "cascade_candidate_stagnation_epochs",

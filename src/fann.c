@@ -748,6 +748,8 @@ FANN_EXTERNAL void FANN_API fann_destroy(struct fann *ann) {
   fann_safe_free(ann->prev_train_slopes);
   fann_safe_free(ann->prev_steps);
   fann_safe_free(ann->prev_weights_deltas);
+  fann_safe_free(ann->adam_m);
+  fann_safe_free(ann->adam_v);
   fann_safe_free(ann->errstr);
   fann_safe_free(ann->cascade_activation_functions);
   fann_safe_free(ann->cascade_activation_steepnesses);
@@ -887,6 +889,14 @@ FANN_EXTERNAL struct fann *FANN_API fann_copy(struct fann *orig) {
   copy->rprop_delta_min = orig->rprop_delta_min;
   copy->rprop_delta_max = orig->rprop_delta_max;
   copy->rprop_delta_zero = orig->rprop_delta_zero;
+
+  /* Copy Adam optimizer parameters */
+  copy->adam_beta1 = orig->adam_beta1;
+  copy->adam_beta2 = orig->adam_beta2;
+  copy->adam_epsilon = orig->adam_epsilon;
+  copy->adam_timestep = orig->adam_timestep;
+  copy->adam_m = NULL;  /* These will be reallocated during training if needed */
+  copy->adam_v = NULL;
 
   /* user_data is not deep copied.  user should use fann_copy_with_user_data() for that */
   copy->user_data = orig->user_data;
@@ -1551,6 +1561,14 @@ struct fann *fann_allocate_structure(unsigned int num_layers) {
   ann->sarprop_step_error_shift = 1.385f;
   ann->sarprop_temperature = 0.015f;
   ann->sarprop_epoch = 0;
+
+  /* Variables for use with Adam training (reasonable defaults) */
+  ann->adam_m = NULL;
+  ann->adam_v = NULL;
+  ann->adam_beta1 = 0.9f;
+  ann->adam_beta2 = 0.999f;
+  ann->adam_epsilon = 1e-8f;
+  ann->adam_timestep = 0;
 
   fann_init_error_data((struct fann_error *)ann);
 
