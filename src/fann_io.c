@@ -177,7 +177,7 @@ int fann_save_internal_fd(struct fann *ann, FILE *conf, const char *configuratio
   fprintf(conf, "rprop_delta_zero=%f\n", ann->rprop_delta_zero);
   fprintf(conf, "adam_beta1=%f\n", ann->adam_beta1);
   fprintf(conf, "adam_beta2=%f\n", ann->adam_beta2);
-  fprintf(conf, "adam_epsilon=%f\n", ann->adam_epsilon);
+  fprintf(conf, "adam_epsilon=%.8f\n", ann->adam_epsilon);
   fprintf(conf, "cascade_output_stagnation_epochs=%u\n", ann->cascade_output_stagnation_epochs);
   fprintf(conf, "cascade_candidate_change_fraction=%f\n", ann->cascade_candidate_change_fraction);
   fprintf(conf, "cascade_candidate_stagnation_epochs=%u\n",

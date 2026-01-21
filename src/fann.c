@@ -1204,6 +1204,9 @@ FANN_EXTERNAL void FANN_API fann_print_parameters(struct fann *ann) {
   printf("RPROP decrease factor                :%8.3f\n", ann->rprop_decrease_factor);
   printf("RPROP delta min                      :%8.3f\n", ann->rprop_delta_min);
   printf("RPROP delta max                      :%8.3f\n", ann->rprop_delta_max);
+  printf("Adam beta1                           :%f\n", ann->adam_beta1);
+  printf("Adam beta2                           :%f\n", ann->adam_beta2);
+  printf("Adam epsilon                         :%.8f\n", ann->adam_epsilon);
   printf("Cascade output change fraction       :%11.6f\n", ann->cascade_output_change_fraction);
   printf("Cascade candidate change fraction    :%11.6f\n", ann->cascade_candidate_change_fraction);
   printf("Cascade output stagnation epochs     :%4d\n", ann->cascade_output_stagnation_epochs);
