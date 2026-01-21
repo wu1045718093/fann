@@ -895,7 +895,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_copy(struct fann *orig) {
   copy->adam_beta2 = orig->adam_beta2;
   copy->adam_epsilon = orig->adam_epsilon;
   copy->adam_timestep = orig->adam_timestep;
-  copy->adam_m = NULL;  /* These will be reallocated during training if needed */
+  copy->adam_m = NULL;
   copy->adam_v = NULL;
 
   /* user_data is not deep copied.  user should use fann_copy_with_user_data() for that */
@@ -1015,6 +1015,29 @@ FANN_EXTERNAL struct fann *FANN_API fann_copy(struct fann *orig) {
       return NULL;
     }
     memcpy(copy->prev_weights_deltas, orig->prev_weights_deltas,
+           copy->total_connections_allocated * sizeof(fann_type));
+  }
+
+  /* Copy Adam optimizer moment vectors if they exist */
+  if (orig->adam_m) {
+    copy->adam_m = (fann_type *)malloc(copy->total_connections_allocated * sizeof(fann_type));
+    if (copy->adam_m == NULL) {
+      fann_error((struct fann_error *)orig, FANN_E_CANT_ALLOCATE_MEM);
+      fann_destroy(copy);
+      return NULL;
+    }
+    memcpy(copy->adam_m, orig->adam_m,
+           copy->total_connections_allocated * sizeof(fann_type));
+  }
+
+  if (orig->adam_v) {
+    copy->adam_v = (fann_type *)malloc(copy->total_connections_allocated * sizeof(fann_type));
+    if (copy->adam_v == NULL) {
+      fann_error((struct fann_error *)orig, FANN_E_CANT_ALLOCATE_MEM);
+      fann_destroy(copy);
+      return NULL;
+    }
+    memcpy(copy->adam_v, orig->adam_v,
            copy->total_connections_allocated * sizeof(fann_type));
   }
 
