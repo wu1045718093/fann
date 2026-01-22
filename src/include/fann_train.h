@@ -826,7 +826,7 @@ FANN_EXTERNAL void FANN_API fann_set_learning_momentum(struct fann *ann, float l
    See also:
    <fann_set_adam_beta1>, <fann_set_training_algorithm>
 
-   This function appears in FANN >= 2.4.0.
+   This function appears in FANN >= 2.3.0.
  */
 FANN_EXTERNAL float FANN_API fann_get_adam_beta1(struct fann *ann);
 
@@ -836,7 +836,7 @@ FANN_EXTERNAL float FANN_API fann_get_adam_beta1(struct fann *ann);
 
    Typical values are close to 1.0, with the default being 0.9.
 
-   This function appears in FANN >= 2.4.0.
+   This function appears in FANN >= 2.3.0.
  */
 FANN_EXTERNAL void FANN_API fann_set_adam_beta1(struct fann *ann, float adam_beta1);
 
@@ -849,7 +849,7 @@ FANN_EXTERNAL void FANN_API fann_set_adam_beta1(struct fann *ann, float adam_bet
    See also:
    <fann_set_adam_beta2>, <fann_set_training_algorithm>
 
-   This function appears in FANN >= 2.4.0.
+   This function appears in FANN >= 2.3.0.
  */
 FANN_EXTERNAL float FANN_API fann_get_adam_beta2(struct fann *ann);
 
@@ -859,7 +859,7 @@ FANN_EXTERNAL float FANN_API fann_get_adam_beta2(struct fann *ann);
 
    Typical values are close to 1.0, with the default being 0.999.
 
-   This function appears in FANN >= 2.4.0.
+   This function appears in FANN >= 2.3.0.
  */
 FANN_EXTERNAL void FANN_API fann_set_adam_beta2(struct fann *ann, float adam_beta2);
 
@@ -872,7 +872,7 @@ FANN_EXTERNAL void FANN_API fann_set_adam_beta2(struct fann *ann, float adam_bet
    See also:
    <fann_set_adam_epsilon>, <fann_set_training_algorithm>
 
-   This function appears in FANN >= 2.4.0.
+   This function appears in FANN >= 2.3.0.
  */
 FANN_EXTERNAL float FANN_API fann_get_adam_epsilon(struct fann *ann);
 
@@ -882,7 +882,7 @@ FANN_EXTERNAL float FANN_API fann_get_adam_epsilon(struct fann *ann);
 
    This is used to prevent division by zero. Typical values are very small, with the default being 1e-8.
 
-   This function appears in FANN >= 2.4.0.
+   This function appears in FANN >= 2.3.0.
  */
 FANN_EXTERNAL void FANN_API fann_set_adam_epsilon(struct fann *ann, float adam_epsilon);
 
