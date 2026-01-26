@@ -764,7 +764,7 @@ void fann_update_weights_adam(struct fann *ann, unsigned int num_data, unsigned 
     v_hat = v[i] / beta2_t;
 
     /* Update weights: w_t = w_{t-1} + learning_rate * m_hat / (sqrt(v_hat) + epsilon) */
-    weights[i] += learning_rate * m_hat / (sqrtf(v_hat) + epsilon);
+    weights[i] += learning_rate * m_hat / (sqrt(v_hat) + epsilon);
 
     /* Clear slope for next iteration */
     train_slopes[i] = 0.0f;
